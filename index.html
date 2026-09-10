@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEL.INFO Soluções em TI</title>
+    <!-- Fonte Google Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #0A2540;       /* Azul Escuro Principal */
+            --primary-light: #1E3A8A;
+            --accent: #FF5E1E;        /* Laranja Moderado para Detalhes */
+            --whatsapp-color: #25D366;/* Verde Oficial WhatsApp */
+            --whatsapp-hover: #1EBE57;
+            --bg-light: #F8FAFC;      /* Fundo Levemente Acinzetado */
+            --card-bg: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            mix-blend-mode: multiply;
+            object-fit: contain;
+            filter: contrast(105%);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* BANNER PRINCIPAL (HERO) */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            height: 50px; /* Garante tamanho uniforme */
+        }
+
+        .btn:hover {
+            background-color: #06192d;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent-border {
+            border-left: 4px solid var(--accent);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .wa-icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .hero-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            opacity: 0.85;
+        }
+
+        .tech-pattern {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        /* SEÇÃO DE SERVIÇOS */
+        .services-section {
+            padding: 3rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle-line {
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: rgba(10, 37, 64, 0.2);
+        }
+
+        .service-card:hover::before {
+            background-color: var(--accent);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: #F1F5F9;
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .service-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.2s ease;
+        }
+
+        .service-card:hover .service-more-btn {
+            gap: 10px;
+        }
+
+        /* MODAL DE SERVIÇOS COM ANIMAÇÃO */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 37, 64, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 4px solid var(--accent);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: #F1F5F9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: #E2E8F0;
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-icon {
+            width: 56px;
+            height: 56px;
+            background-color: rgba(10, 37, 64, 0.08);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .modal-body {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1.5rem 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* SOBRE NÓS */
+        .about-section {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        /* SEÇÃO DE CONTATO */
+        .contact-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .contact-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background-color: rgba(10, 37, 64, 0.05);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card a, .contact-card p {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        /* FORMULÁRIO DE CONTATO */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
+        }
+
+        .form-status {
+            display: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            display: block;
+            background-color: #DEF7EC;
+            color: #03543F;
+            border: 1px solid #BCF0DA;
+        }
+
+        .form-status.error {
+            display: block;
+            background-color: #FDE8E8;
+            color: #9B1C1C;
+            border: 1px solid #FBD5D5;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-info p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0.3rem;
+        }
+
+        .footer-info a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-info a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.08);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            color: #64748B;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 7rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="LOGOTIPO - COLORIDO.png" alt="BEL.INFO Soluções em TI" class="logo-img">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Tecnologia Eficiente para o Seu Negócio</h1>
+            <p>Simplifique seus processos, aumente a segurança e otimize a infraestrutura da sua empresa com nossas soluções especializadas em TI.</p>
+            
+            <div class="hero-buttons">
+                <a href="#servicos" class="btn btn-accent-border">
+                    Saiba Mais <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="https://wa.me/5591991168895?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20BEL.INFO." target="_blank" class="btn btn-whatsapp">
+                    <!-- ÍCONE OFICIAL DO WHATSAPP (SVG VETORIAL) -->
+                    <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.9-186.6 184.9zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                    </svg>
+                    Entre em contato agora
+                </a>
+            </div>
+        </div>
+        <div class="hero-graphic">
+            <svg class="tech-pattern" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="20" width="30" height="30" rx="6" stroke="#0A2540" stroke-width="3"/>
+                <rect x="70" y="20" width="30" height="30" rx="6" stroke="#0A2540" stroke-width="3"/>
+                <rect x="70" y="70" width="30" height="30" rx="6" stroke="#0A2540" stroke-width="3"/>
+                <rect x="120" y="70" width="30" height="30" rx="6" stroke="#0A2540" stroke-width="3"/>
+                <rect x="20" y="70" width="30" height="30" rx="6" stroke="#FF5E1E" stroke-width="3"/>
+                <path d="M35 50V70M50 35H70M85 50V70M100 85H120" stroke="#0A2540" stroke-width="3" stroke-linecap="round"/>
+                <path d="M35 85H50" stroke="#FF5E1E" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="services-section">
+        <div class="section-header">
+            <h2>Nossos Serviços em Destaque</h2>
+            <div class="subtitle-line"></div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" onclick="openModal('consultoria')">
+                <div class="icon-box">
+                    <i data-lucide="line-chart"></i>
+                </div>
+                <h3>1. Consultoria em TI</h3>
+                <p>Análise completa da infraestrutura atual para identificar gargalos, otimizar custos e alinhar a tecnologia aos objetivos estratégicos do negócio.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+
+            <div class="service-card" onclick="openModal('manutencao')">
+                <div class="icon-box">
+                    <i data-lucide="laptop"></i>
+                </div>
+                <h3>2. Manutenção de Notebooks e Desktops</h3>
+                <p>Diagnóstico, reparo, higienização preventiva, troca de componentes e otimização de desempenho para computadores de mesa e notebooks.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+
+            <div class="service-card" onclick="openModal('suporte')">
+                <div class="icon-box">
+                    <i data-lucide="headphones"></i>
+                </div>
+                <h3>3. Suporte Técnico</h3>
+                <p>Atendimento ágil para resolução de problemas de hardware e software, com opções de suporte presencial e remoto contínuo.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+
+            <div class="service-card" onclick="openModal('redes')">
+                <div class="icon-box">
+                    <i data-lucide="network"></i>
+                </div>
+                <h3>4. Redes e Infraestrutura</h3>
+                <p>Projeto, estruturação e manutenção de redes de computadores com e sem fio, garantindo conectividade estável e de alta velocidade.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+
+            <div class="service-card" onclick="openModal('seguranca')">
+                <div class="icon-box">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <h3>5. Segurança da Informação</h3>
+                <p>Implementação de políticas de proteção de dados, firewalls, controle de acessos e rotinas de backup preventivo contra ameaças.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+
+            <div class="service-card" onclick="openModal('sistemas')">
+                <div class="icon-box">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3>6. Análise e Implantação de Sistemas</h3>
+                <p>Mapeamento de necessidades operacionais, seleção, integração e implantação de softwares de gestão para aperfeiçoar os processos da empresa.</p>
+                <div class="service-more-btn">Ver detalhes <i data-lucide="plus-circle" style="width:16px;"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL FLUTUANTE DE DETALHES DO SERVIÇO -->
+    <div id="service-modal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-header">
+                <div id="modal-icon" class="modal-icon"></div>
+                <h3 id="modal-title" class="modal-title"></h3>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+            <div class="modal-footer">
+                <a href="#contato" onclick="closeModal()" class="btn btn-accent-border">
+                    Solicitar Orçamento <i data-lucide="send"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUEM SOMOS -->
+    <section id="sobre" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Sobre a Bel Info Soluções em TI</h2>
+                <p>A BEL.INFO Soluções em TI é dedicada a fornecer soluções tecnológicas sob medida para empresas que buscam modernizar e proteger suas operações.</p>
+                <p>Com uma equipe qualificada e focada na excelência, combinamos inovação técnica e entendimento de negócios para entregar resultados sólidos e transformadores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO & FORMULÁRIO -->
+    <section id="contato" class="contact-section">
+        <div class="section-header">
+            <h2>Entre em Contato</h2>
+            <div class="subtitle-line"></div>
+        </div>
+
+        <div class="contact-container">
+            <!-- Informações diretas -->
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div>
+                        <h4>E-mail</h4>
+                        <a href="mailto:anderson.carlo@belinfo.com.br">anderson.carlo@belinfo.com.br</a>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">
+                        <i data-lucide="phone"></i>
+                    </div>
+                    <div>
+                        <h4>Telefone / WhatsApp</h4>
+                        <a href="https://wa.me/5591991168895" target="_blank">(91) 9 9116-8895</a>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div>
+                        <h4>Atendimento</h4>
+                        <p>Segunda a Sexta, das 08h às 18h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário de Mensagem via FormSubmit -->
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/ajax/anderson.carlo@belinfo.com.br" method="POST">
+                <input type="hidden" name="_subject" value="Nova mensagem recebida pelo site - BEL.INFO">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-group">
+                    <label for="nome">Seu Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Seu E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Seu Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(91) 90000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Como podemos ajudar a sua empresa?" required></textarea>
+                </div>
+
+                <button type="submit" id="form-submit-btn" class="btn btn-accent-border" style="width: 100%;">
+                    Enviar Mensagem <i data-lucide="send"></i>
+                </button>
+
+                <div id="form-status" class="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>BEL.INFO Soluções em TI</h4>
+                <p><i data-lucide="mail" style="width: 16px; height: 16px;"></i> <a href="mailto:anderson.carlo@belinfo.com.br">anderson.carlo@belinfo.com.br</a></p>
+                <p><i data-lucide="phone" style="width: 16px; height: 16px;"></i> <a href="https://wa.me/5591991168895" target="_blank">(91) 9 9116-8895</a></p>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link" title="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="social-link" title="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-link" title="Facebook"><i data-lucide="facebook"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BEL.INFO Soluções em TI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script dos Ícones, Modal Interativo e Formulário -->
+    <script>
+        lucide.createIcons();
+
+        /* DADOS EXPLICATIVOS DETALHADOS DOS SERVIÇOS */
+        const servicesData = {
+            consultoria: {
+                title: "1. Consultoria em TI",
+                icon: "line-chart",
+                content: `
+                    <p>Nossa consultoria estratégica em TI avalia integralmente os recursos computacionais da sua empresa para garantir que a tecnologia seja um motor de crescimento, e não um gargalo operacional.</p>
+                    <br>
+                    <p><strong>O que incluímos neste serviço:</strong></p>
+                    <ul>
+                        <li>Auditoria de infraestrutura física e lógica.</li>
+                        <li>Mapeamento de riscos de segurança e vulnerabilidades.</li>
+                        <li>Planejamento de redução de custos com licenças e equipamentos.</li>
+                        <li>Elaboração do plano diretor de TI alinhado às metas da empresa.</li>
+                    </ul>
+                `
+            },
+            manutencao: {
+                title: "2. Manutenção de Notebooks e Desktops",
+                icon: "laptop",
+                content: `
+                    <p>Manter o parque tecnológico operando em alta performance reduz custos com substituição precoce e previne paradas inesperadas na sua equipe.</p>
+                    <br>
+                    <p><strong>Serviços inclusos:</strong></p>
+                    <ul>
+                        <li>Limpeza técnica interna e troca de pasta térmica.</li>
+                        <li>Upgrade de hardware (Instalação de SSD, expansão de memória RAM).</li>
+                        <li>Reparo em placas-mãe e conectores de carga.</li>
+                        <li>Formatação, instalação e otimização do sistema operacional.</li>
+                    </ul>
+                `
+            },
+            suporte: {
+                title: "3. Suporte Técnico",
+                icon: "headphones",
+                content: `
+                    <p>Oferecemos suporte completo com tempo de resposta ágil para garantir continuidade total e estabilidade às rotinas diárias do seu negócio.</p>
+                    <br>
+                    <p><strong>Modelos de Atendimento:</strong></p>
+                    <ul>
+                        <li><strong>Suporte Remoto:</strong> Solução rápida de falhas via software sem necessidade de deslocamento.</li>
+                        <li><strong>Atendimento Presencial:</strong> Visitas técnicas no local para reparos físicos ou configurações complexas.</li>
+                        <li>Gestão preventiva e resolução de problemas em pacotes de softwares de escritório e e-mails.</li>
+                    </ul>
+                `
+            },
+            redes: {
+                title: "4. Redes e Infraestrutura",
+                icon: "network",
+                content: `
+                    <p>Uma rede de alta capacidade e com baixa latência é indispensável para a comunicação diária e produtividade corporativa.</p>
+                    <br>
+                    <p><strong>Nossa atuação contempla:</strong></p>
+                    <ul>
+                        <li>Projeto e cabeamento estruturado (Cat5e, Cat6).</li>
+                        <li>Instalação e configuração de Roteadores, Switches e Access Points.</li>
+                        <li>Criação de redes Wi-Fi corporativas seguras com isolamento para visitantes.</li>
+                        <li>Organização, identificação e limpeza de Racks de comunicação.</li>
+                    </ul>
+                `
+            },
+            seguranca: {
+                title: "5. Segurança da Informação",
+                icon: "shield-check",
+                content: `
+                    <p>Proteja as informações confidenciais do seu negócio e de seus clientes contra acessos não autorizados, vazamentos e ataques digitais.</p>
+                    <br>
+                    <p><strong>Soluções de proteção:</strong></p>
+                    <ul>
+                        <li>Configuração de Firewalls e barreiras de proteção de borda.</li>
+                        <li>Políticas automatizadas de Backup local e em Nuvem (criptografado).</li>
+                        <li>Gestão centralizada de antivírus corporativo.</li>
+                        <li>Adequação técnica aos requisitos básicos de segurança da LGPD.</li>
+                    </ul>
+                `
+            },
+            sistemas: {
+                title: "6. Análise e Implantação de Sistemas",
+                icon: "cpu",
+                content: `
+                    <p>Auxiliamos no levantamento dos fluxos de trabalho da sua empresa para implementar as melhores ferramentas tecnológicas de gestão e automação.</p>
+                    <br>
+                    <p><strong>Principais etapas:</strong></p>
+                    <ul>
+                        <li>Mapeamento das necessidades operacionais dos setores.</li>
+                        <li>Seleção e homologação de softwares de gestão (ERP, CRM, etc.).</li>
+                        <li>Acompanhamento completo no processo de migração de dados.</li>
+                        <li>Treinamento das equipes para uso otimizado do novo sistema.</li>
+                    </ul>
+                `
+            }
+        };
+
+        /* LÓGICA DO MODAL */
+        function openModal(serviceKey) {
+            const modal = document.getElementById('service-modal');
+            const data = servicesData[serviceKey];
+
+            if (data) {
+                document.getElementById('modal-title').innerText = data.title;
+                document.getElementById('modal-icon').innerHTML = `<i data-lucide="${data.icon}"></i>`;
+                document.getElementById('modal-body').innerHTML = data.content;
+                
+                lucide.createIcons();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Impede o scroll de fundo
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('service-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Reativa o scroll
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.id === 'service-modal') {
+                closeModal();
+            }
+        }
+
+        // Fechar ao pressionar ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        /* FORMULÁRIO AJAX */
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Enviando...";
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.className = "form-status success";
+                    status.innerHTML = "Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.";
+                    form.reset();
+                } else {
+                    status.className = "form-status error";
+                    status.innerHTML = "Ops! Ocorreu um problema ao enviar seu formulário.";
+                }
+            } catch (error) {
+                status.className = "form-status error";
+                status.innerHTML = "Ops! Ocorreu um erro de rede. Tente novamente.";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Enviar Mensagem <i data-lucide="send"></i>';
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
